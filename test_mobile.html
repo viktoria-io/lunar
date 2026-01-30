@@ -1,0 +1,146 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Mobile Language Dropdown Test</title>
+    <style>
+        body {
+            margin: 0;
+            padding: 20px;
+            font-family: Arial, sans-serif;
+            background: #0d0d0f;
+            color: #ccc;
+        }
+        .test-container {
+            max-width: 600px;
+            margin: 0 auto;
+        }
+        h1 {
+            color: #ffaff9;
+        }
+        .test-info {
+            background: rgba(255, 175, 249, 0.1);
+            padding: 20px;
+            border-radius: 8px;
+            margin: 20px 0;
+        }
+        .console-log {
+            background: #1a1a1a;
+            padding: 20px;
+            border-radius: 8px;
+            font-family: monospace;
+            font-size: 12px;
+            max-height: 400px;
+            overflow-y: auto;
+            margin: 20px 0;
+        }
+        .console-log div {
+            padding: 4px 0;
+            border-bottom: 1px solid #333;
+        }
+        .log-info { color: #90EE90; }
+        .log-warn { color: #FFD700; }
+        .log-error { color: #FF6B6B; }
+    </style>
+</head>
+<body>
+    <div class="test-container">
+        <h1>Mobile Language Dropdown Test</h1>
+        
+        <div class="test-info">
+            <h2>Instructions:</h2>
+            <p>1. Resize your browser window to mobile size (≤767px)</p>
+            <p>2. Check the console logs below</p>
+            <p>3. Look for the pink floating button in bottom-right corner</p>
+            <p>4. Current window width: <span id="window-width">-</span>px</p>
+        </div>
+
+        <div class="test-info">
+            <h2>DOM Check:</h2>
+            <p>Original .language-dropdown: <span id="original-check">-</span></p>
+            <p>Cloned body > .language-dropdown: <span id="cloned-check">-</span></p>
+            <p>Clone has #lang-current: <span id="lang-current-check">-</span></p>
+        </div>
+
+        <div class="test-info">
+            <h2>CSS Check:</h2>
+            <p>Cloned element computed position: <span id="css-position">-</span></p>
+            <p>Cloned element z-index: <span id="css-z-index">-</span></p>
+            <p>Cloned element display: <span id="css-display">-</span></p>
+        </div>
+
+        <div class="console-log" id="console-output"></div>
+    </div>
+
+    <script>
+        const logs = [];
+        
+        function addLog(type, message) {
+            logs.push({ type, message });
+            updateConsole();
+        }
+
+        function updateConsole() {
+            const output = document.getElementById('console-output');
+            output.innerHTML = logs.map(log => 
+                `<div class="log-${log.type}">${log.message}</div>`
+            ).join('');
+            output.scrollTop = output.scrollHeight;
+        }
+
+        // Intercept console.log
+        const originalLog = console.log;
+        console.log = function(...args) {
+            originalLog.apply(console, args);
+            addLog('info', args.join(' '));
+        };
+
+        // Check window width
+        function updateWindowWidth() {
+            document.getElementById('window-width').textContent = window.innerWidth;
+            addLog('info', `Window width: ${window.innerWidth}px`);
+        }
+
+        // Check DOM
+        function checkDOM() {
+            const original = document.querySelector('.language-dropdown');
+            const cloned = document.querySelector('body > .language-dropdown');
+            const langCurrent = cloned ? cloned.querySelector('#lang-current') : null;
+
+            document.getElementById('original-check').textContent = original ? '✓ Found' : '✗ Not found';
+            document.getElementById('cloned-check').textContent = cloned ? '✓ Found' : '✗ Not found';
+            document.getElementById('lang-current-check').textContent = langCurrent ? '✓ Found' : '✗ Not found';
+
+            if (cloned) {
+                const style = window.getComputedStyle(cloned);
+                document.getElementById('css-position').textContent = style.position;
+                document.getElementById('css-z-index').textContent = style.zIndex;
+                document.getElementById('css-display').textContent = style.display;
+            }
+        }
+
+        // Initial checks
+        window.addEventListener('load', function() {
+            addLog('info', 'Page loaded');
+            updateWindowWidth();
+            
+            // Check DOM after a short delay (for JS to run)
+            setTimeout(() => {
+                addLog('info', 'Checking DOM...');
+                checkDOM();
+            }, 500);
+
+            // Re-check when window is resized
+            window.addEventListener('resize', () => {
+                updateWindowWidth();
+                checkDOM();
+            });
+        });
+    </script>
+
+    <link rel="stylesheet" href="/css/style.css">
+</head>
+<body>
+</body>
+</html>
