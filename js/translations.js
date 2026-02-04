@@ -26,7 +26,7 @@ const TRANSLATIONS = {
         
         // Этапы процесса
         process_stage_design: "Дизайн",
-        process_stage_accessibility: "Доступность", 
+        process_stage_accessibility: "Разработка", 
         process_stage_seo: "SEO",
         process_stage_website: "www.viktoria.io",
         
@@ -134,7 +134,7 @@ const TRANSLATIONS = {
         
         // Этапы процесса
         process_stage_design: "Design",
-        process_stage_accessibility: "Accessibility", 
+        process_stage_accessibility: "Development", 
         process_stage_seo: "SEO",
         process_stage_website: "www.viktoria.io",
         
@@ -242,7 +242,7 @@ const TRANSLATIONS = {
         
         // Этапы процесса
         process_stage_design: "Дизайн",
-        process_stage_accessibility: "Доступність", 
+        process_stage_accessibility: "Розробка", 
         process_stage_seo: "SEO",
         process_stage_website: "www.viktoria.io",
         

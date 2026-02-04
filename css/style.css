@@ -2651,7 +2651,7 @@ a {
   display: none !important;
   flex-direction: row !important;
   gap: 0 !important;
-  margin-left: 12px !important;
+  margin-left: -5px !important;
   background: transparent !important;
   border: none !important;
   backdrop-filter: none !important;
@@ -2676,7 +2676,7 @@ a {
   border-radius: 0 !important;
   font-size: 14px !important;
   transition: color 0.2s ease !important;
-  border-left: 1px solid rgba(153, 153, 153, 0.3) !important;
+  border-left: none !important;
   background: transparent !important;
 }
 
@@ -2691,7 +2691,7 @@ a {
 
 .language-option:hover {
   background-color: transparent !important;
-  color: rgb(204, 204, 204) !important;
+  color: #F4B4F5 !important;
 }
 
 #lang-current {
@@ -4543,7 +4543,7 @@ body > .language-dropdown .language-option.active:hover {
 }
 
 .language-dropdown .nav-link-text:hover {
-    background: rgba(255, 175, 249, 0.2);
+    background: transparent;
 }
 
 .language-dropdown-menu {
@@ -4580,7 +4580,7 @@ body > .language-dropdown .language-option.active:hover {
 }
 
 .language-dropdown-menu .language-option:hover {
-    background: rgba(255, 175, 249, 0.2);
+    background: transparent;
 }
 
 /* Мобильная адаптация */
@@ -4597,4 +4597,42 @@ body > .language-dropdown .language-option.active:hover {
     .language-dropdown.active .language-dropdown-menu {
         transform: none;
     }
+}
+
+/* Custom scrollbar styles inspired by loader.html */
+::-webkit-scrollbar {
+    width: 2px;
+}
+
+::-webkit-scrollbar-track {
+    background: transparent;
+    border-radius: 47px;
+}
+
+::-webkit-scrollbar-thumb {
+    background: #666666;
+    border-radius: 47px;
+    transition: background 0.3s ease;
+    height: 4px;
+}
+
+::-webkit-scrollbar-thumb:hover {
+    background: #555555;
+}
+
+/* Firefox scrollbar styles */
+* {
+    scrollbar-width: thin;
+    scrollbar-color: #666666 transparent;
+}
+
+/* For Firefox - more detailed scrollbar styling */
+html {
+    scrollbar-width: thin;
+    scrollbar-color: #666666 transparent;
+}
+
+body {
+    scrollbar-width: thin;
+    scrollbar-color: #666666 transparent;
 }
