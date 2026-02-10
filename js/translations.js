@@ -9,7 +9,7 @@ const TRANSLATIONS = {
         nav_start_project: "Начать проект",
         
         // Hero секция
-        hero_title: "Digital  Agency",
+        hero_title: "Design & Dev",
         hero_intro_colored: "Воплощаю идеи в",
         hero_intro_regular: "инновационные продукты с премиальным дизайном.",
         
@@ -117,7 +117,7 @@ const TRANSLATIONS = {
         nav_start_project: "Start Project",
         
         // Hero секция
-        hero_title: "Digital Agency",
+        hero_title: "Design & Dev",
         hero_intro_colored: "I bring ideas to life in",
         hero_intro_regular: "innovative products with premium design.",
         
@@ -225,7 +225,7 @@ const TRANSLATIONS = {
         nav_start_project: "Почати проект",
         
         // Hero секция
-        hero_title: "Digital Agency",
+        hero_title: "Design & Dev",
         hero_intro_colored: "Втілюю ідеї в",
         hero_intro_regular: "інноваційні продукти з преміум дизайном.",
         
